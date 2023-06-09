@@ -107,3 +107,102 @@ let myPromise = new Promise((response, reject) => {
   }
 });
 myPromise.then((done) => console.log(done)).catch((err) => console.log(err));
+
+// Create examples to explain callback function
+//
+
+// A callback is a function passed as an argument to another function
+
+function mainFunction(callback) {
+  console.log("Performing operation...");
+  // Use setTimeout to simulate an asynchronous operation
+  setTimeout(function () {
+    callback("Operation complete");
+  }, 1000);
+}
+
+// Define the callback function
+function callbackFunction(result) {
+  console.log("Result: " + result);
+}
+
+// Call the main function with the callback function
+mainFunction(callbackFunction);
+
+// Create examples to explain callback hell function
+
+// Callback hell is a phenomenon that happens when multiple
+// callbacks are nested on top of each other
+
+function hello() {
+  let work = true;
+  let promise = new Promise((done, err) => {
+    if (work) {
+      done(
+        setTimeout(() => {
+          console.log("1");
+          setTimeout(() => {
+            console.log("2");
+            setTimeout(() => {
+              console.log("3");
+              setTimeout(() => {
+                console.log("4");
+                setTimeout(() => {
+                  console.log("5");
+                  setTimeout(() => {
+                    console.log("6");
+                    setTimeout(() => {
+                      console.log("7");
+                    }, 7000);
+                  }, 6000);
+                }, 5000);
+              }, 4000);
+            }, 3000);
+          }, 2000);
+        }, 1000)
+      );
+    }
+  });
+  promise.then((data) => console.log(data));
+}
+hello();
+
+// nested call is example of callback hell
+
+// Create examples to explain promises function
+// A Promise is a proxy for a value not necessarily
+// known when the promise is created
+
+let variable1 = true;
+
+let myPromise1 = new Promise((response, reject) => {
+  if (variable1) {
+    response("Promise Resolved.. ");
+  } else {
+    reject("Promise Rejected ..");
+  }
+});
+myPromise1.then((done) => console.log(done)).catch((err) => console.log(err));
+
+// Create examples to explain async await function
+
+//  Await function is used to wait for the promise.
+//  It could be used within the async block only
+
+function asynchronous_operational_method() {
+  let first_promise = new Promise((resolve, reject) => resolve("Hello"));
+  let second_promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(" pal family");
+    }, 1000);
+  });
+  let combined_promise = Promise.all([first_promise, second_promise]);
+  return combined_promise;
+}
+
+async function display() {
+  let data = await asynchronous_operational_method();
+  console.log(data);
+}
+
+display();

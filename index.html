@@ -161,110 +161,170 @@ function hello() {
         <hr />
         <h2>Q5.Create examples to explain callback function</h2>
         <pre>
-        
-function FindSum(a, b) {
-    return a + b;
-  }
-  
-  function DisplayData(data, batch) {
-    console.log(`i am from ${data} and My batch is EA${batch}`);
-  }
-  
-  DisplayData("PrepBytes", FindSum(10, 13));
-  // write a call back function just like pass a function as parameter
-          </pre
+            // A callback is a function passed as an argument to another function
+
+            function mainFunction(callback) {
+                console.log("Performing operation...");
+                // Use setTimeout to simulate an asynchronous operation
+                setTimeout(function() {
+                  callback("Operation complete");
+                }, 1000);
+              }
+               
+              // Define the callback function
+              function callbackFunction(result) {
+                console.log("Result: " + result);
+              }
+               
+              // Call the main function with the callback function
+              mainFunction(callbackFunction);         </pre
         >
         <div class="answer">
           <h3>Output:-</h3>
-          <h1 class="output">i am from PrepBytes and My batch is EA23</h1>
+          <h1 class="output">
+            Performing operation...
+            <br />
+            Result: Operation complete
+          </h1>
         </div>
       </div>
       <div class="question">
         <hr />
         <h2>Q6.Create examples to explain callback hell function</h2>
         <pre>
-        
-function FindSum(a, b) {
-    return a + b;
+      // Callback hell is a phenomenon that happens when 
+      // multiple callbacks are nested on top of each other
+
+function hello() {
+    let work = true;
+    let promise = new Promise((done, err) => {
+      if (work) {
+        done(
+          setTimeout(() => {
+            console.log("1");
+            setTimeout(() => {
+              console.log("2");
+              setTimeout(() => {
+                console.log("3");
+                setTimeout(() => {
+                  console.log("4");
+                  setTimeout(() => {
+                    console.log("5");
+                    setTimeout(() => {
+                      console.log("6");
+                      setTimeout(() => {
+                        console.log("7");
+                      }, 7000);
+                    }, 6000);
+                  }, 5000);
+                }, 4000);
+              }, 3000);
+            }, 2000);
+          }, 1000)
+        );
+      }
+    });
+    promise.then((data) => console.log(data));
   }
-  
-  function DisplayData(data, batch) {
-    console.log(`i am from ${data} and My batch is EA${batch}`);
-  }
-  
-  DisplayData("PrepBytes", FindSum(10, 13));
-  // write a call back function just like pass a function as parameter
+  hello();
+
+  // nested call is example of callback hell 
           </pre
         >
         <div class="answer">
           <h3>Output:-</h3>
-          <h1 class="output">i am from PrepBytes and My batch is EA23</h1>
+          <h1 class="output">
+            1 <br />2 <br />3 <br />4 <br />5 <br />6 <br />7
+          </h1>
         </div>
       </div>
       <div class="question">
         <hr />
         <h2>Q7.Create examples to explain promises function</h2>
         <pre>
-        
-function FindSum(a, b) {
-    return a + b;
-  }
-  
-  function DisplayData(data, batch) {
-    console.log(`i am from ${data} and My batch is EA${batch}`);
-  }
-  
-  DisplayData("PrepBytes", FindSum(10, 13));
-  // write a call back function just like pass a function as parameter
+            // A Promise is a proxy for a value not necessarily 
+            // known when the promise is created
+            let variable1 = true;
+
+            let myPromise1 = new Promise((response, reject) => {
+              if (variable1) {
+                response("Promise Resolved.. ");
+              } else {
+                reject("Promise Rejected ..");
+              }
+            });
+            myPromise1.then((done) => console.log(done)).catch((err) => console.log(err));
+            
           </pre
         >
         <div class="answer">
           <h3>Output:-</h3>
-          <h1 class="output">i am from PrepBytes and My batch is EA23</h1>
+          <h1 class="output">Promise Resolved..</h1>
         </div>
       </div>
       <div class="question">
         <hr />
         <h2>Q8.Create examples to explain async await function</h2>
         <pre>
-        
-function FindSum(a, b) {
-    return a + b;
-  }
-  
-  function DisplayData(data, batch) {
-    console.log(`i am from ${data} and My batch is EA${batch}`);
-  }
-  
-  DisplayData("PrepBytes", FindSum(10, 13));
-  // write a call back function just like pass a function as parameter
+       
+//  Await function is used to wait for the promise.
+//  It could be used within the async block only
+
+function asynchronous_operational_method() {
+    let first_promise = new Promise((resolve, reject) => resolve("Hello"));
+    let second_promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve(" pal family");
+        }, 1000);
+    });
+    let combined_promise = Promise.all([first_promise, second_promise]);
+    return combined_promise;
+    }
+     
+    async function display() {
+    let data = await asynchronous_operational_method();
+    console.log(data);
+    }
+     
+    display();
           </pre
         >
         <div class="answer">
           <h3>Output:-</h3>
-          <h1 class="output">i am from PrepBytes and My batch is EA23</h1>
+          <h1 class="output"> ['Hello', ' pal family']</h1>
         </div>
       </div>
       <div class="question">
         <hr />
         <h2>Q9.Create examples to explain promise.all function</h2>
         <pre>
-        
-function FindSum(a, b) {
-    return a + b;
-  }
-  
-  function DisplayData(data, batch) {
-    console.log(`i am from ${data} and My batch is EA${batch}`);
-  }
-  
-  DisplayData("PrepBytes", FindSum(10, 13));
-  // write a call back function just like pass a function as parameter
+       
+//  The Promise.all() static method takes an iterable of promises
+//  as input and returns a single Promise 
+
+
+function asynchronous_operational_method() {
+    let first_promise = new Promise((resolve, reject) => resolve("Hello"));
+    let second_promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve(" pal family");
+        }, 1000);
+    });
+    let combined_promise = Promise.all([first_promise, second_promise]);
+    return combined_promise;
+    }
+     
+    async function display() {
+    let data = await asynchronous_operational_method();
+    console.log(data);
+    }
+     
+    display();
           </pre
         >
         <div class="answer">
           <h3>Output:-</h3>
-          <h1 class="output">i am from PrepBytes and My batch is EA23</h1>
+          <h1 class="output"> ['Hello', ' pal family']</h1>
         </div>
       </div>
     </div>
